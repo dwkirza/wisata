@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Hotel;
+use App\Models\Room;
 
 class HotelController extends Controller
 {
@@ -13,7 +15,16 @@ class HotelController extends Controller
      */
     public function index()
     {
-        return view('Hotel.list-hotel');
+        $room = Room::all();
+        $data_room = [
+            'room_all' => $room
+        ];
+        $hotel = Hotel::all();
+        $data = [
+            'hotel_all' => $hotel,
+            'title' => 'Hotel'
+        ];
+        return view('Hotel/list-hotel', $data, $data_room);
     }
 
     /**

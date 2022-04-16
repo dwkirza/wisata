@@ -15,6 +15,8 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\DestinationController;
 use App\Http\Controllers\API\UserAdminController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\HotelController;
+use App\Http\Controllers\InfokamarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +37,7 @@ Route::get('/', function () {
         "image1" => "1.png",
         "image2" => "2.png",
         "image3" => "3.jpeg",
-        
+
     ]);
 });
 
@@ -65,10 +67,16 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 
 
 //Admin
-Route::get('/dashboard', function() {
+Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 
 // Route::get('dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
 Route::resource('/dashboard/posts', DashboardPostController::class);
+
+//List Hotel
+Route::get('/Hotel', [HotelController::class, 'index'])->name('listhotel');
+
+// Route Info Kamar
+Route::get('/info-kamar', [InfokamarController::class, 'index'])->name('info-kamar');
 // ->middleware('auth');
