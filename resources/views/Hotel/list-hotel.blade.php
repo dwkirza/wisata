@@ -36,12 +36,9 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $hotel_all['name'] }}</h5>
                             <p class="card-text"> {{ $hotel_all['address'] }}</i></p>
-                            <i class="fa-solid fa-wifi fa-sm"> wi-fi</i> &#160; <i
-                                class="fa-solid fa-person-swimming fa-sm"> kolam renang</i> &#160; <i
-                                class="fa-solid fa-utensils fa-sm"> Sarapan</i>
+                            <i class="fa-solid fa-wifi fa-sm"> wi-fi</i> &#160; <i class="fa-solid fa-person-swimming fa-sm"> kolam renang</i> &#160; <i class="fa-solid fa-utensils fa-sm"> Sarapan</i>
                             <br><br>
-                            <h4 class="card-text">Rp.&nbsp;{{ $hotel_all['price'] }}</p> <a href="/info-kamar"
-                                    class="btn btn-primary">Pesan</a>
+                            <h4 class="card-text">Rp.&nbsp;{{ $hotel_all['price'] }}</p> <a href="/info-kamar" class="btn btn-primary">Pesan</a>
                         </div>
                     </div>
                 </div>
