@@ -80,3 +80,8 @@ Route::get('/Hotel', [HotelController::class, 'index'])->name('listhotel');
 // Route Info Kamar
 Route::get('/info-kamar', [InfokamarController::class, 'index'])->name('info-kamar');
 // ->middleware('auth');
+
+//login
+Route::get('/login', function () {
+    return view('admin.login');
+});

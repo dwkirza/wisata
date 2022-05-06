@@ -24,28 +24,42 @@
 
     @section('container')
 
-    <div class="container-full">
-        <div class="col-12 col-sm-6 col-md-6 col-lg-10" style="color: black;">
-            @foreach ($hotel_all as $hotel_all)
-            <div class="card mb-3">
+    <section class=" text-center container-full">
+        <div class="row py-lg-5">
+            <div class="col-lg-9 col-md-8 mx-auto">
+                @foreach ($hotel_all as $hotel_all)
+
+            </div>
+            <div class="card mb-3" style="background-color:E0E3D5 ;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="assets/img/zurichhotel.jpg" class="img-fluid rounded-start" alt="...">
+                        <img src="assets/img/zurichhotell.jpg" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $hotel_all['name'] }}</h5>
-                            <p class="card-text"> {{ $hotel_all['address'] }}</i></p>
-                            <i class="fa-solid fa-wifi fa-sm"> wi-fi</i> &#160; <i class="fa-solid fa-person-swimming fa-sm"> kolam renang</i> &#160; <i class="fa-solid fa-utensils fa-sm"> Sarapan</i>
-                            <br><br>
-                            <h4 class="card-text">Rp.&nbsp;{{ $hotel_all['price'] }}</p> <a href="/info-kamar" class="btn btn-primary">Pesan</a>
+
+                        <div class="card-body" style="text-align: left;">
+                            <h3 class="card-title">{{ $hotel_all['name'] }}</h3>
+                            <p class="card-text">{{ $hotel_all['capacity'] }}</p>
+                            <hr>
+                            <h5 class="card-text"><i class="fa-regular fa-location-pin">{{ $hotel_all['address'] }}</i></h5>
+                            <p class="card-text">{{ $hotel_all['feature'] }}</p>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3 class="card-text">Rp.&nbsp;{{ $hotel_all['price'] }}</h3>
+                                    </div>
+                                    <div class="col" style="text-align: right;">
+                                        <a href="/info-kamar" class="btn btn-primary" style="background-color: 6D7938;">Pesan</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                @endforeach
             </div>
-            @endforeach
-        </div>
-    </div>
+    </section>
 
 
     @endsection

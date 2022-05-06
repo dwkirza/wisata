@@ -27,108 +27,88 @@
     <div class="container">
         <!-- Content here -->
         <section class=" text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-9 col-md-8 mx-auto">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 4"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 5"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="assets/img/zurichhotel5.jpg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="assets/img/zurichhotel4.jpg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="assets/img/zurichhotel6.jpg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="assets/img/zurichhotel7.jpg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="assets/img/zurichhotel8.jpg" class="d-block w-100" alt="...">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+            <div class="container">
+                <div class="row">
+                    <h1 class="fw-light" style="font-size: 45; font-family: 'Mulish', sans-serif;">Zurich Hotel Balikpapan</h1>
+                    <br><br><br><br>
+                    <div class="col-sm-6"><img src="assets/img/zurichhotel5.jpg" class="d-block w-100" alt="..."></div>
+                    <div class="col-sm-6"><img src="assets/img/zurichhotel4.jpg" class="d-block w-100" alt="..."></div>
+                </div> <br> <br>
+                <div class="row">
+                    <div class="col-sm"><img src="assets/img/zurichhotel6.jpg" class="d-block w-100" alt="..."></div>
+                    <div class="col-sm"><img src="assets/img/zurichhotel7.jpg" class="d-block w-100" alt="..."></div>
+                    <div class="col-sm"><img src="assets/img/zurichhotel8.jpg" class="d-block w-100" alt="..."></div>
+                </div>
+            </div>
+        </section>
+        <br> <br>
+
+        <section class=" text-center container">
+            <div class=" container" style="text-align: left;">
+                @foreach ($room_all as $room_all)
+                <div class="row">
+                    <div class="col-sm-5 col-md-6">
+                        <h2 class="card-text left">Rp.&nbsp;{{ $room_all['price'] }} </h2>
+                        <h2 class="fw-light" style="font-size: 25; font-family: 'Mulish', sans-serif; text-align: left;">Zurich Hotel Balikpapan</h2>
+                        <p class="card-text">{{ $room_all['capacity'] }}
+                            <hr>
+
+                            <i class="fa-solid fa-wifi"> Wi-Fi</i> <br><br>
+                            <i class="fa-solid fa-person-swimming"> Kolam Renang</i><br><br>
+                            <i class="fa-solid fa-utensils"> Sarapan</i> <br><br>
+                            <i class="fa-solid fa-square-parking"> Parkir 24 Jam</i> <br><br>
+                        <p class="card-text" style="text-align: justify;">Selain standar dari Indonesia Care, semua tamu akan mendapatkan Wi-Fi gratis di semua kamar dan parkir gratis jika tiba dengan mobil. Terletak strategis di Pusat Kota Balikpapan yang merupakan bagian Balikpapan, properti ini menempatkan Anda dekat dengan atraksi dan opsi restoran menarik. Jangan pulang dulu sebelum berkunjung ke Balikpapan Plaza yang terkenal. Memiliki peringkat bintang-3, properti berkelas ini menyediakan akses ke pijat, pusat kebugaran dan restoran untuk para tamu di properti.</h4> <br> <br>
+                            <a class="btn btn-primary" style="background-color: 6D7938;">Pesan Sekarang</a>
                     </div>
-                </div>
-            </div>
-            <div class="card text-center">
-                <div class="card-header">
-                    FASILITAS
-                </div>
-                <div class="card-body">
-                    <h5 class="fa-solid fa-wifi"> Wi-Fi</h5> &nbsp;&nbsp; <h5 class="fa-solid fa-person-swimming"> Kolam Renang</h5> &nbsp;&nbsp; <h5 class="fa-solid fa-utensils"> Sarapan</h5> &nbsp;&nbsp;<h5 class="fa-solid fa-square-parking"> Parkir 24 Jam</h5>
-                </div>
-            </div>
-            <div class="card text-center">
-                <div class="card-header">
-                    INFO LOKASI
-                </div>
-                <div class="card-body">
-                    <i class="fa-solid fa-location-dot"> Jl. Jend. Sudirman No. 321, Pusat Kota Balikpapan, Balikpapan, Kalimantan Timur, Indonesia, 76114</i> <br><br>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8386059938116!2d116.8566163145385!3d-1.2697542990738715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df146e9cbff9a73%3A0x1915c6d1e15ee2d1!2sHotel%20Zurich%20Balikpapan!5e0!3m2!1sid!2sid!4v1650272934613!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-            <div class="card text-center">
-                <div class="card-header">
-                    TIPE KAMAR
-                </div>
-                <div class="card-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm">
-                                <div class="container">
-                                    <div class="row">
+
+                    <div class="col-sm-5 offset-sm-5 col-md-6 offset-md-0">
+                        <div class="card" style="text-align: right;" style="width: auto;">
+                            <iframe src=" https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8386059938116!2d116.8566163145385!3d-1.2697542990738715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df146e9cbff9a73%3A0x1915c6d1e15ee2d1!2sHotel%20Zurich%20Balikpapan!5e0!3m2!1sid!2sid!4v1651226490236!5m2!1sid!2sid" width="auto" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <div class="card-body" style="background-color: E0E3D5;">
+                                <h5 class="card-text" style="text-align: center;">Tempat Terpopuler di Balikpapan</h5>
+                                <hr>
+                                <div class="container" style="background-color: E0E3D5;">
+                                    <div class="row" style="text-align: left;">
                                         <div class="col">
-                                            @foreach ($room_all as $room_all)
-                                            <div class="card mb-3">
-                                                <div class="row g-0">
-                                                    <h5 class="card-title">{{ $room_all['name'] }}</h5>
-                                                    <p class="card-text"> {{ $room_all['description'] }}</i></p>
-                                                    <i class="fa-solid fa-wifi fa-sm"> wi-fi</i> &#160; <i class="fa-solid fa-person-swimming fa-sm"> kolam renang</i> &#160; <i class="fa-solid fa-utensils fa-sm"> Sarapan</i>
-                                                    <br>
-                                                    <h3 class="card-title">Rp.&nbsp;{{ $room_all['price'] }}</h3>
-                                                    <a class="btn btn-primary" href="/error">Pesan</a>
-
-
-                                                </div>
-                                            </div>
+                                            <p class=> Balikpapan Plaza</p>
+                                            <p class=> Pantai Kemala</p>
+                                            <p class=> Transmart Carrefour</p>
+                                            <p class=> Pantai Benua Patra</p>
+                                            <p class=> Pantai Melawai</p>
                                         </div>
-                                        @endforeach
-                                    </div>
-                                    <div class="col">
-                                        Column
+                                        <div class="col" style="text-align: right;">
+                                            <p class=> 2,4 km</p>
+                                            <p class=> 4,9 km</p>
+                                            <p class=> 5,4 km</p>
+                                            <p class=> 5,5 km</p>
+                                            <p class=> 5,5 km</p>
+                                        </div>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
-    </div>
-    </div>
+            <br> <br><br> <br><br> <br><br> <br><br> <br>
+            <h1 class="fw-light" style="font-size: 60; font-family: 'Mulish', sans-serif;">Fasilitas</h1>
 
 
     </div>
     </div>
     </div>
-    </div>
-
     </section>
+
+    </div>
+    </div>
+    @endforeach
+
+    </div>
+    </div>
+
+
 
 
 
