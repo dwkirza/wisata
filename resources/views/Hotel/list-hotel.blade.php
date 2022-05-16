@@ -24,6 +24,7 @@
 
     @section('container')
 
+
     <section class=" text-center container-full">
         <div class="row py-lg-5">
             <div class="col-lg-9 col-md-8 mx-auto">
@@ -41,15 +42,18 @@
                             <h3 class="card-title">{{ $hotel_all['name'] }}</h3>
                             <p class="card-text">{{ $hotel_all['capacity'] }}</p>
                             <hr>
-                            <h5 class="card-text"><i class="fa-regular fa-location-pin">{{ $hotel_all['address'] }}</i></h5>
+                            <h5 class="card-text"><i class="fa-regular fa-location-pin">{{ $hotel_all['address'] }}</i>
+                            </h5>
                             <p class="card-text">{{ $hotel_all['feature'] }}</p>
                             <div class="container">
                                 <div class="row">
                                     <div class="col">
-                                        <h3 class="card-text">Rp.&nbsp;{{ $hotel_all['price'] }}</h3>
+                                        <h3 class="card-text">Rp.&nbsp;{{ $hotel_all['price'] }} - Rp.&nbsp;{{
+                                            $hotel_all['price']+400000 }}</h3>
                                     </div>
                                     <div class="col" style="text-align: right;">
-                                        <a href="/info-kamar" class="btn btn-primary" style="background-color: 6D7938;">Pesan</a>
+                                        <a href="/Hotel/{{ $hotel_all['id'] }}" class="btn btn-primary"
+                                            style="background-color: 6D7938;">Pesan</a>
                                     </div>
                                 </div>
                             </div>

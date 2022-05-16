@@ -17,6 +17,7 @@ use App\Http\Controllers\API\UserAdminController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\InfokamarController;
+use Illuminate\Auth\Events\Login;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,7 @@ Route::get('/', function () {
         "image3" => "3.jpeg",
 
     ]);
-});
+})->name('home');
 
 Route::get('/about', function () {
     return view('about', [
@@ -50,38 +51,52 @@ Route::get('/about', function () {
     ]);
 });
 
-
-//Destination
-Route::resource('destinationCategory', DestinationCategoryController::class)->only([
-    'index', 'show'
-]);
-Route::resource('destination', DestinationController::class)->only([
-    'index', 'show'
-]);
-Route::get('/destinationByCategory/{id}', [DestinationController::class, 'destinationByCategory']);
-
-
 //Auth
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 
 
-//Admin
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-});
-
-// Route::get('dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
-Route::resource('/dashboard/posts', DashboardPostController::class);
-
-//List Hotel
-Route::get('/Hotel', [HotelController::class, 'index'])->name('listhotel');
-
-// Route Info Kamar
-Route::get('/info-kamar', [InfokamarController::class, 'index'])->name('info-kamar');
-// ->middleware('auth');
-
 //login
-Route::get('/login', function () {
-    return view('admin.login');
+// Route::get('/login', function () {
+//     return view('admin.login');
+// });
+
+Route::middleware(['auth'])->group(function () {
+
+    //Destination
+    Route::resource('destinationCategory', DestinationCategoryController::class)->only([
+        'index', 'show'
+    ]);
+    Route::resource('destination', DestinationController::class)->only([
+        'index', 'show'
+    ]);
+    Route::get('/destinationByCategory/{id}', [DestinationController::class, 'destinationByCategory']);
+
+
+
+
+    //Admin
+    Route::get('/dashboard', function () {
+        return view('dashboard.index');
+    });
+
+    // Route::get('dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
+    Route::resource('/dashboard/posts', DashboardPostController::class);
+
+    //List Hotel
+    Route::get('/Hotel', [HotelController::class, 'index'])->name('listhotel');
+    Route::get('/Hotel/{id}', [HotelController::class, 'show'])->name('detailhotel');
+    Route::get('/Hotel/{id}/{category}', [HotelController::class, 'category'])->name('categoryroom');
+
+
+    // Route Info Kamar
+    Route::get('/info-kamar', [InfokamarController::class, 'index'])->name('info-kamar');
+
+    //Route Logout
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+    //Route Transaksi
+    Route::get('/Hotel/{id}/{category}/transaksi', [HotelController::class, 'transaction'])->name('transaksi');
+
+    // ->middleware('auth');
 });
