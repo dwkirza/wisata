@@ -47,7 +47,29 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'required|unique:hotel,name',
+            'hotel_image' => '',
+            'hotel_image.*' => 'file|mimes:png,jpg',
+        ]);
+        try {
+            $files = $request->file('hotel_image');
+            $filename = $fields['hotel_image'] . '-HotelImage-' . time() . rand(1, 1000) . '.' . $files->getClientOriginalName();
+            $filepath = $files->storeAs('uploads/hotel_image', $filename);
+
+            $fields['hotel_image'] = $filepath;
+            $data = Hotel::create($fields);
+            return response()->json([
+                'success' => true,
+                'message' => 'store success',
+                'data' => $data
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'error',
+                'errors' => $e->getMessage()
+            ]);
+        }
     }
 
     /**
