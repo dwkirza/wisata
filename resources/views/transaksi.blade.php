@@ -31,7 +31,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
         body {
-            background-color: #ffe8d2;
+            background-color: #CBCDC1;
             font-family: 'Montserrat', sans-serif
         }
 
@@ -40,7 +40,7 @@
         }
 
         .logo {
-            background-color: #eeeeeea8
+            background-color: #E0E3D5
         }
 
         .totals tr td {
@@ -73,9 +73,9 @@
 
         <div class="row d-flex justify-content-center">
 
-            <div class="col-md-8">
+            <div class="col-md-8" style="background-color:#E0E3D5;">
 
-                <div class="card">
+                <div class="card" style="background:#E0E3D5;">
 
 
                     <div class="text-left logo p-2 px-5">
@@ -153,8 +153,7 @@
                                     <tr>
                                         <td width="20%">
 
-                                            <img src="/assets/img/zurichhotell.jpg" class="img-fluid rounded-start"
-                                                alt="...">
+                                            <img src="/assets/img/zurichhotell.jpg" class="img-fluid rounded-start" alt="...">
 
                                         </td>
 
@@ -219,7 +218,7 @@
                     </div>
 
 
-                    <div class="d-flex justify-content-between footer p-3">
+                    <div class="d-flex justify-content-between footer p-3" style="background:#E0E3D5 ;">
 
                         <span>{{ $today }}</span>
 
@@ -235,8 +234,7 @@
         </div>
 
     </div>
-    <script type='text/javascript'
-        src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js'></script>
     <script type='text/javascript' src='#'></script>
     <script type='text/javascript' src='#'></script>
     <script type='text/javascript'>
@@ -245,7 +243,7 @@
     <script type='text/javascript'>
         var myLink = document.querySelector('a[href="#"]');
         myLink.addEventListener('click', function(e) {
-          e.preventDefault();
+            e.preventDefault();
         });
     </script>
 

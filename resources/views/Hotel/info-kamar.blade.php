@@ -52,18 +52,14 @@
                         <h2 class="card-text left">Rp.&nbsp;{{ $hotel['price'] }}{{isset($category) ? '' :' - Rp.
                             '.strval($hotel['price']+400000)
                             }} </h2>
-                        <h2 class="fw-light"
-                            style="font-size: 25; font-family: 'Mulish', sans-serif; text-align: left;">{{
+                        <h2 class="fw-light" style="font-size: 25; font-family: 'Mulish', sans-serif; text-align: left;">{{
                             $hotel['name'] }}</h2>
                         <p class="card-text">{{ $hotel['capacity'] }}
                             <br>
                             <br>
-                            <a class="btn btn-light"
-                                href="{{ route('categoryroom', [$hotel['id'], 'standard']) }}">Standard</a>
-                            <a class="btn btn-light"
-                                href="{{ route('categoryroom', [$hotel['id'], 'superior']) }}">Superior</a>
-                            <a class="btn btn-light"
-                                href="{{ route('categoryroom', [$hotel['id'], 'deluxe']) }}">Deluxe</a>
+                            <a class="btn btn-light" href="{{ route('categoryroom', [$hotel['id'], 'standard']) }}">Standard</a>
+                            <a class="btn btn-light" href="{{ route('categoryroom', [$hotel['id'], 'superior']) }}">Superior</a>
+                            <a class="btn btn-light" href="{{ route('categoryroom', [$hotel['id'], 'deluxe']) }}">Deluxe</a>
                             <hr>
 
                             <i class="fa-solid fa-wifi"> Wi-Fi</i> <br><br>
@@ -78,17 +74,13 @@
                             berkelas ini menyediakan akses ke pijat, pusat kebugaran dan restoran untuk para tamu di
                             properti.</h4> <br> <br>
                             @if(isset($category))
-                            <a href="{{ route('transaksi', [$hotel['id'], $category]) }}" class="btn btn-primary"
-                                style="background-color: 6D7938;">Pesan Sekarang</a>
+                            <a href="{{ route('transaksi', [$hotel['id'], $category]) }}" class="btn btn-primary" style="background-color: 6D7938;">Pesan Sekarang</a>
                             @endif
                     </div>
 
                     <div class="col-sm-5 offset-sm-5 col-md-6 offset-md-0">
                         <div class="card" style="text-align: right;" style="width: auto;">
-                            <iframe
-                                src=" https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8386059938116!2d116.8566163145385!3d-1.2697542990738715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df146e9cbff9a73%3A0x1915c6d1e15ee2d1!2sHotel%20Zurich%20Balikpapan!5e0!3m2!1sid!2sid!4v1651226490236!5m2!1sid!2sid"
-                                width="auto" height="350" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src=" https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8386059938116!2d116.8566163145385!3d-1.2697542990738715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df146e9cbff9a73%3A0x1915c6d1e15ee2d1!2sHotel%20Zurich%20Balikpapan!5e0!3m2!1sid!2sid!4v1651226490236!5m2!1sid!2sid" width="auto" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             <div class="card-body" style="background-color: E0E3D5;">
                                 <h5 class="card-text" style="text-align: center;">Tempat Terpopuler di Balikpapan</h5>
                                 <hr>
@@ -118,7 +110,6 @@
                 </div>
             </div>
             <br> <br><br> <br><br> <br><br> <br><br> <br>
-            <h1 class="fw-light" style="font-size: 60; font-family: 'Mulish', sans-serif;">Fasilitas</h1>
 
 
     </div>
