@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
--- Host:                         localhost
--- Server version:               10.4.6-MariaDB - mariadb.org binary distribution
+-- Host:                         127.0.0.1
+-- Server version:               10.4.11-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win64
--- HeidiSQL Version:             10.2.0.5599
+-- HeidiSQL Version:             10.3.0.5876
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -13,7 +13,7 @@
 
 
 -- Dumping database structure for tes_wisata
-CREATE DATABASE IF NOT EXISTS `tes_wisata` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
+CREATE DATABASE IF NOT EXISTS `tes_wisata` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `tes_wisata`;
 
 -- Dumping structure for table tes_wisata.destinations
@@ -32,12 +32,11 @@ CREATE TABLE IF NOT EXISTS `destinations` (
   PRIMARY KEY (`destination_id`),
   KEY `destinations_destination_category_id_foreign` (`destination_category_id`),
   CONSTRAINT `destinations_destination_category_id_foreign` FOREIGN KEY (`destination_category_id`) REFERENCES `destination_category` (`destination_category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table tes_wisata.destinations: ~15 rows (approximately)
-DELETE FROM `destinations`;
 /*!40000 ALTER TABLE `destinations` DISABLE KEYS */;
-INSERT INTO `destinations` (`destination_id`, `destination_name`, `destination_description`, `destination_location`, `destination_day_temp`, `destination_night_temp`, `destination_rating`, `destination_image`, `destination_category_id`, `created_at`, `updated_at`) VALUES
+REPLACE INTO `destinations` (`destination_id`, `destination_name`, `destination_description`, `destination_location`, `destination_day_temp`, `destination_night_temp`, `destination_rating`, `destination_image`, `destination_category_id`, `created_at`, `updated_at`) VALUES
 	(1, 'Pulau Lemukutan', 'Pulau Lemukutan adalah sebuah pulau yang secara administratif terletak di Kecamatan Sungai Raya Kepulauan, Kabupaten Bengkayang, Provinsi Kalimantan Barat. Aktivitas menarik yang dapat dilakukan di Pulau Lemukutan adalah naik perahu menuju pulau, pesona bawah laut, snorkling, diving, bermain kano, dan lain-lain.', 'https://goo.gl/maps/fbAo8HFm6EVPybiq5', '29°C', '31°C', 5, '["uploads\\/destination_image\\/Pulau Lemukutan-DestinationImage-1649056524205.lemukutan 1.jpg","uploads\\/destination_image\\/Pulau Lemukutan-DestinationImage-1649056524829.lemukutan 2.jpg","uploads\\/destination_image\\/Pulau Lemukutan-DestinationImage-1649056524456.lemukutan 3.jpg"]', 1, '2022-04-04 04:27:33', '2022-04-04 07:15:24'),
 	(2, 'Kereng Bangkirai', 'Dermaga Kereng Bangkirai merupakan salah satu objek wisata yang banyak diminati wisatawan di Palangka Raya. Jarak tempuh dari pusat Palangka Raya ke dermaga kereng lebih kurang 20 menit dengan jarak 11 km dari pusat kota. Wahana wisata yang ada di dermaga kereng bangkirai yaitu sepeda bebek air, susur sungai, wisata ke batu ampar, dan masih banyak yang lain. Biaya untuk menggunakan wahana wisata pun tidak mahal sekitar 5.000 hingga 30.000 rupiah.', 'https://goo.gl/maps/yP7TsbFdDLkhrYg69', '28°C', '30°C', 5, '["uploads\\/destination_image\\/Kereng Bangkirai-DestinationImage-1649056579626.kereng bangkirai 2.png"]', 1, '2022-04-04 04:27:36', '2022-04-04 07:16:19'),
 	(3, 'Danau Sentarum', 'Danau Sentarum adalah danau musiman yang berada di Kapuas Hulu, Kalimantan Barat. Danau ini dipenuhi air selama 10 bulan setiap tahunnya, dan sisanya akan surut, membentuk kolam-kolam kecil yang berisi ikan-ikan kecil. Saat kemarau, Air Danau Sentarum memasok setengah dari aliran air Sungai Kapuas. Untuk mencapai Danau Sentarum, dibutuhkan waktu 14 jam dari Kota Pontianak melalui perjalanan darat dan air dengan rute Pontianak-Sintang-Semitau. Lalu, dari Semitau menuju ke lokasi menggunakan perahu motor jurusan Lanjak. ', 'https://goo.gl/maps/LAWEMUXkBea1LJ3G8', '29°C', '31°C', 5, '["uploads\\/destination_image\\/Danau Sentarum-DestinationImage-1649056637924.danau sentarum 2.jpg"]', 1, '2022-04-04 04:27:38', '2022-04-04 07:17:17'),
@@ -63,16 +62,41 @@ CREATE TABLE IF NOT EXISTS `destination_category` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`destination_category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table tes_wisata.destination_category: ~4 rows (approximately)
-DELETE FROM `destination_category`;
+-- Dumping data for table tes_wisata.destination_category: ~3 rows (approximately)
 /*!40000 ALTER TABLE `destination_category` DISABLE KEYS */;
-INSERT INTO `destination_category` (`destination_category_id`, `destination_category_name`, `destination_category_image`, `created_at`, `updated_at`) VALUES
+REPLACE INTO `destination_category` (`destination_category_id`, `destination_category_name`, `destination_category_image`, `created_at`, `updated_at`) VALUES
 	(1, 'Alam', 'uploads/category_image/Alam-CategoryImage-1649017045911.alam.png', NULL, '2022-04-03 20:17:25'),
 	(2, 'Kota', 'uploads/category_image/Kota-CategoryImage-1649017086116.kota.png', NULL, '2022-04-03 20:18:06'),
 	(3, 'Kuliner', 'uploads/category_image/Kuliner-CategoryImage-1649017098315.kuliner.jpg', NULL, '2022-04-03 20:18:18');
 /*!40000 ALTER TABLE `destination_category` ENABLE KEYS */;
+
+-- Dumping structure for table tes_wisata.hotels
+CREATE TABLE IF NOT EXISTS `hotels` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `capacity` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `feature` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `hotel_image` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table tes_wisata.hotels: ~7 rows (approximately)
+/*!40000 ALTER TABLE `hotels` DISABLE KEYS */;
+REPLACE INTO `hotels` (`id`, `name`, `address`, `capacity`, `feature`, `price`, `created_at`, `updated_at`, `hotel_image`) VALUES
+	(1, 'Zurich Hotel', 'Jl. Jend. Sudirman No. 321, Pusat Kota Balikpapan, Balikpapan, Kalimantan Timur, Indonesia, 76114', '2 Dewasa, 1 Kamar Tidur, 1 Tempat Tidur, 1 Kamar Mandi', 'Wifi, Kolam Renang, Sarapan, Parkir 24 jam', 550000, NULL, NULL, 'uploads/hotel_image/zurichhotel.jpg'),
+	(2, 'Swissbell Balikpapan', 'Balikpapan Ocean Square, Jl. Jenderal Sudirman, Klandasan Ilir, Kota Balikpapan, Kalimantan Timur', '2 Dewasa, 1 Kamar Tidur, 2 Tempat Tidur, 1 Kamar Mandi', 'Wifi, Kolam Renang, Sarapan, Parkir 24 Jam', 430000, NULL, NULL, ''),
+	(3, 'Whizprime Hotel', 'Jl. Jenderal Sudirman No.321, Damai, Kec. Balikpapan Kota, Kota Balikpapan, Kalimantan Timur 76114', '2 Dewasa, 1 Kamar Tidur, 2 Tempat Tidur, 1 Kamar Mandi', 'Wifi, Kolam Renang, Sarapan, Parkir 24 Jam', 380000, NULL, NULL, NULL),
+	(4, 'Golden Tulip Hotel', 'Jl. Jenderal Sudirman No.7, Klandasan Ilir, Kec. Balikpapan Kota, Kota Balikpapan, Kalimantan Timur 76114', '2 Dewasa, 1 Kamar Tidur, 1 Tempat Tidur, 1 Kamar Mandi', 'Wifi, Kolam Renang, Sarapan, Parkir 24 Jam', 400000, NULL, NULL, NULL),
+	(5, 'Blue Sky Hotel', 'Jl. Letjen Suprapto No.1, Marga Sari, Kec. Balikpapan Bar., Kota Balikpapan, Kalimantan Timur 76123', '2 Dewasa, 1 Kamar Tidur, 2 Tempat Tidur, 1 Kamar Mandi', 'Wifi, Kolam Renang, Sarapan, Parkir 24 Jam', 625000, NULL, NULL, NULL),
+	(6, 'Astara Hotel', 'Pentacity Shopping Mall, Jl. Jenderal Sudirman No.47, Superblock, Kecamatan Balikpapan Selatan, Kota Balikpapan, Kalimantan Timur 76114', '2 Dewasa, 1 Kamar Tidur, 1 Tempat Tidur, 1 Kamar Mandi', 'Wifi, Kolam Renang, Sarapan, Parkir 24 Jam', 450000, NULL, NULL, NULL),
+	(7, 'Hotel Neo+', 'Jl. Mayjend Sutoyo No.67, Gunungsari Ulu, Kec. Balikpapan Tengah, Kota Balikpapan, Kalimantan Timur 76122', '2 Dewasa, 1 Kamar Tidur, 2 Tempat Tidur, 1 Kamar Mandi', 'Wifi, Kolam Renang, Parkir 24 Jam', 330000, NULL, NULL, NULL);
+/*!40000 ALTER TABLE `hotels` ENABLE KEYS */;
 
 -- Dumping structure for table tes_wisata.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
@@ -80,16 +104,17 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table tes_wisata.migrations: ~4 rows (approximately)
-DELETE FROM `migrations`;
+-- Dumping data for table tes_wisata.migrations: ~6 rows (approximately)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+REPLACE INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 	(2, '2022_03_12_204300_create_destinations_table', 1),
 	(3, '2022_03_12_204529_create_users_table', 1),
-	(4, '2022_03_23_154713_create_destination_category_table', 1);
+	(4, '2022_03_23_154713_create_destination_category_table', 1),
+	(5, '2022_04_11_160615_create_hotels_table', 2),
+	(6, '2022_04_11_161749_create_rooms_table', 3);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Dumping structure for table tes_wisata.personal_access_tokens
@@ -109,31 +134,47 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table tes_wisata.personal_access_tokens: ~1 rows (approximately)
-DELETE FROM `personal_access_tokens`;
 /*!40000 ALTER TABLE `personal_access_tokens` DISABLE KEYS */;
-INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
+REPLACE INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
 	(1, 'App\\Models\\User', 1, 'admin', 'cf40ecfc4534be2e23b97a7e383e34b929136634f8cf22bf6b4e9dbc84520af0', '["*"]', '2022-04-04 07:18:47', '2022-04-03 20:12:44', '2022-04-04 07:18:47');
 /*!40000 ALTER TABLE `personal_access_tokens` ENABLE KEYS */;
+
+-- Dumping structure for table tes_wisata.rooms
+CREATE TABLE IF NOT EXISTS `rooms` (
+  `id_room` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `capacity` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `feature` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id_room`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table tes_wisata.rooms: ~1 rows (approximately)
+/*!40000 ALTER TABLE `rooms` DISABLE KEYS */;
+REPLACE INTO `rooms` (`id_room`, `name`, `capacity`, `feature`, `price`, `created_at`, `updated_at`) VALUES
+	(1, 'Deluxe', '2 Dewasa, 1 Kamar Tidur,  1 Tempat Tidur, 1 Kamar Mandi', 'WiFi, Kolam Renang, Sarapan, Check In 24 Jam', 550000, '2022-04-16 19:40:37', '2022-04-16 19:40:38');
+/*!40000 ALTER TABLE `rooms` ENABLE KEYS */;
 
 -- Dumping structure for table tes_wisata.users
 CREATE TABLE IF NOT EXISTS `users` (
   `users_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `users_first_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `users_last_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `users_email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `users_password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `users_role` enum('admin','user') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`users_id`),
-  UNIQUE KEY `users_users_email_unique` (`users_email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  UNIQUE KEY `users_users_email_unique` (`email`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table tes_wisata.users: ~2 rows (approximately)
-DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`users_id`, `users_first_name`, `users_last_name`, `users_email`, `users_password`, `users_role`, `created_at`, `updated_at`) VALUES
-	(1, 'admin', 'admin', 'admin@gmail.com', '$2a$10$sZVTDkm45VK5A31YBnUaUud.7QzR25.186xFvxtE9mhhUcL2mYvdK', 'admin', NULL, NULL),
+REPLACE INTO `users` (`users_id`, `users_first_name`, `users_last_name`, `email`, `password`, `users_role`, `created_at`, `updated_at`) VALUES
+	(1, 'admin', 'admin', 'admin@gmail.com', '$2y$10$4Rw9en/5kxD.Xh.FVqZ6KOB80IgDInR1nxrvPzrWBrkJLyetoO02W', 'admin', NULL, NULL),
 	(2, 'tes', 'tes', 'tes@gmail.com', '$2y$10$8J2D8rCAp5nHZp0/FuxIDuaGT8v8an8CDP8pppy3ioukj/3.FlRQW', 'user', NULL, NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
