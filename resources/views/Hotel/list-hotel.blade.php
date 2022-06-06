@@ -1,146 +1,68 @@
-@extends('Hotel.header')
+<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/heroes/">
 
-@section('container')
-<div class="con">
-    <div class="col-12 col-sm-6 col-md-6 col-lg-10" style="color: #E5E7EB;">
-        <div class="card">
-            <div class="card-body">
-                <ul class="nav" style="justify-content: center">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Lokasi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Masuk</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Keluar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">Kamar</a>
-                    </li>
-                </ul>
+<!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+</style>
+
+<body>
+    @extends('layout.main')
+
+    @section('container')
+
+
+    <section class=" text-center container-full">
+        <div class="row py-lg-5">
+            <div class="col-lg-9 col-md-8 mx-auto">
+                @foreach ($hotel_all as $hotel_all)
+
             </div>
-        </div>
-    </div>
-    <div class="section-body">
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-            <article class="article">
-                <div class="article-header">
-                    <div class="article-image" style="background-image: url('{{ asset('assets/img/h1.png')}}">
+            <div class="card mb-3" style="background-color:E0E3D5 ;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ url('storage/'.$hotel_all->hotel_image) }}" class="img-fluid rounded-start" alt="...">
                     </div>
-                    <div class="article-title">
-                        <h2><a href="#">Swiss Belhotel Balikpapan </a></h2>
-                    </div>
-                </div>
-                <div class="article-details">
-                    <p>Jalan Jenderal Sudirman No 345, Sudirman Square, Balikpapan , Indonesia</p>
-                    <div class="article-cta">
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </article>
-        </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-            <article class="article">
-                <div class="article-header">
-                    <div class="article-image" style="background-image: url('{{ asset('assets/img/h1.png')}}">
-                    </div>
-                    <div class="article-title">
-                        <h2><a href="#">Swiss Belhotel Balikpapan </a></h2>
-                    </div>
-                </div>
-                <div class="article-details">
-                    <p>Jalan Jenderal Sudirman No 345, Sudirman Square, Balikpapan , Indonesia</p>
-                    <div class="article-cta">
-                        <a href="#" class="btn btn-primary">Read More</a>
+                    <div class="col-md-8">
+
+                        <div class="card-body" style="text-align: left;">
+                            <h3 class="card-title">{{ $hotel_all['name'] }}</h3>
+                            <p class="card-text">{{ $hotel_all['capacity'] }}</p>
+                            <hr>
+                            <h5 class="card-text"><i class="fa-regular fa-location-pin">{{ $hotel_all['address'] }}</i>
+                            </h5>
+                            <p class="card-text">{{ $hotel_all['feature'] }}</p>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3 class="card-text">Rp.&nbsp;{{ $hotel_all['price'] }} - Rp.&nbsp;{{
+                                            $hotel_all['price']+400000 }}</h3>
+                                    </div>
+                                    <div class="col" style="text-align: right;">
+                                        <a href="/Hotel/{{ $hotel_all['id'] }}" class="btn btn-primary" style="background-color: 6D7938;">Pesan</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </article>
-        </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-            <article class="article">
-                <div class="article-header">
-                    <div class="article-image" style="background-image: url('{{ asset('assets/img/h1.png')}}">
-                    </div>
-                    <div class="article-title">
-                        <h2><a href="#">Swiss Belhotel Balikpapan </a></h2>
-                    </div>
-                </div>
-                <div class="article-details">
-                    <p>Jalan Jenderal Sudirman No 345, Sudirman Square, Balikpapan , Indonesia</p>
-                    <div class="article-cta">
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </article>
-        </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-            <article class="article">
-                <div class="article-header">
-                    <div class="article-image" style="background-image: url('{{ asset('assets/img/h1.png')}}">
-                    </div>
-                    <div class="article-title">
-                        <h2><a href="#">Swiss Belhotel Balikpapan </a></h2>
-                    </div>
-                </div>
-                <div class="article-details">
-                    <p>Jalan Jenderal Sudirman No 345, Sudirman Square, Balikpapan , Indonesia</p>
-                    <div class="article-cta">
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </article>
-        </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-            <article class="article">
-                <div class="article-header">
-                    <div class="article-image" style="background-image: url('{{ asset('assets/img/h1.png')}}">
-                    </div>
-                    <div class="article-title">
-                        <h2><a href="#">Swiss Belhotel Balikpapan </a></h2>
-                    </div>
-                </div>
-                <div class="article-details">
-                    <p>Jalan Jenderal Sudirman No 345, Sudirman Square, Balikpapan , Indonesia</p>
-                    <div class="article-cta">
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </article>
-        </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-            <article class="article">
-                <div class="article-header">
-                    <div class="article-image" style="background-image: url('{{ asset('assets/img/h1.png')}}">
-                    </div>
-                    <div class="article-title">
-                        <h2><a href="#">Swiss Belhotel Balikpapan </a></h2>
-                    </div>
-                </div>
-                <div class="article-details">
-                    <p>Jalan Jenderal Sudirman No 345, Sudirman Square, Balikpapan , Indonesia</p>
-                    <div class="article-cta">
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </article>
-        </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-            <article class="article">
-                <div class="article-header">
-                    <div class="article-image" style="background-image: url('{{ asset('assets/img/h1.png')}}">
-                    </div>
-                    <div class="article-title">
-                        <h2><a href="#">Swiss Belhotel Balikpapan </a></h2>
-                    </div>
-                </div>
-                <div class="article-details">
-                    <p>Jalan Jenderal Sudirman No 345, Sudirman Square, Balikpapan , Indonesia</p>
-                    <div class="article-cta">
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </div>
+
+                @endforeach
+            </div>
+    </section>
+
+
     @endsection
