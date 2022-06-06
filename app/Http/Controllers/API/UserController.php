@@ -20,7 +20,7 @@ class UserController extends Controller
         {
             $id = Auth::user()->users_id;
 
-            $user = User::find($id, ['users_first_name', 'users_last_name', 'users_email', 'users_password']);
+            $user = User::find($id, ['users_first_name', 'users_last_name', 'email', 'password']);
 
             if ( ! $user ) {
                 return response()->json([
@@ -50,7 +50,7 @@ class UserController extends Controller
             $fields = $request->validate([
                 'users_first_name' => 'string',
                 'users_last_name' => 'string',
-                'users_email' => 'email|string|unique:users,users_email',
+                'users_email' => 'email|string|unique:users,email',
                 'users_password' => 'confirmed|string',
                 ]);
                 try {
@@ -60,21 +60,15 @@ class UserController extends Controller
                     if (!empty($fields['users_password'])) {
                         $response->update($fields);
                         $response->update([
-                            'users_password' => bcrypt($fields['users_password']),
+                            'password' => bcrypt($fields['users_password']),
                         ]);
                     }
     
                     else if (empty($fields['users_password'])) {
                         $response->update($fields);
                     }
-                    // $response->update([
-                    //     'users_first_name' => $fields['users_first_name'],
-                    //     'users_last_name' => $fields['users_last_name'],
-                    //     'users_email' => $fields['users_email'],
-                    //     'users_password' => bcrypt($fields['users_password']),
-                    // ]);
 
-                    $response = User::find($id, ['users_first_name', 'users_last_name', 'users_email', 'users_password']);
+                    $response = User::find($id, ['users_first_name', 'users_last_name', 'email', 'password']);
                     return response()->json([
                         'success' => true,
                         'message' => 'update success',

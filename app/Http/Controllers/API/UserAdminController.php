@@ -30,7 +30,7 @@ class UserAdminController extends Controller
         $fields = $request->validate([
             'users_first_name' => 'required|string',
             'users_last_name' => 'required|string',
-            'users_email' => 'required|email|unique:users,users_email',
+            'users_email' => 'required|email|unique:users,email',
             'users_password' => 'required|string|confirmed',
             'users_role' => 'required',
             ]);
@@ -38,8 +38,8 @@ class UserAdminController extends Controller
                 $response = User::create([
                     'users_first_name' => $fields['users_first_name'],
                     'users_last_name' => $fields['users_last_name'],
-                    'users_email' => $fields['users_email'],
-                    'users_password' => bcrypt($fields['users_password']),
+                    'email' => $fields['users_email'],
+                    'password' => bcrypt($fields['users_password']),
                     'users_role' => $fields['users_role']
                 ]);
                 return response()->json([
@@ -79,7 +79,7 @@ class UserAdminController extends Controller
         $fields = $request->validate([
             'users_first_name' => 'string',
             'users_last_name' => 'string',
-            'users_email' => 'email|string|unique:users,users_email',
+            'users_email' => 'email|string|unique:users,email',
             'users_password' => 'confirmed|string',
             'users_role' => '',
             ]);
@@ -88,7 +88,7 @@ class UserAdminController extends Controller
                 if (!empty($fields['users_password'])) {
                     $response->update($fields);
                     $response->update([
-                        'users_password' => bcrypt($fields['users_password']),
+                        'password' => bcrypt($fields['users_password']),
                     ]);
                 }
 
