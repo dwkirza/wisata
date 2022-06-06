@@ -11,8 +11,15 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
 
+<<<<<<< HEAD
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  </head>
+=======
   <!-- Custom styles for this template -->
   <link href="login.css" rel="stylesheet">
+>>>>>>> hotel
 
 </head>
 
@@ -20,12 +27,19 @@
 <body class="text-center" style="background-color:E0E3D5;">
 
   @if(session()->has('loginError'))
+<<<<<<< HEAD
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ session('loginError') }}
+      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Tutup"></button>
+    </div>
+=======
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
     {{ session('loginError') }}
     <button type="button" class="btn-close" data-bs-dismis="alert" aria-label="Tutup">
 
     </button>
   </div>
+>>>>>>> hotel
   @endif
 
   <div class="row justify-content-center mt-5 w-100">

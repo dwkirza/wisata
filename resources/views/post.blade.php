@@ -47,12 +47,12 @@
         <div class="p-4 mb-3 rounded " style="border: 1px solid black;
         border-bottom-left-radius: 25px;">
           <h4 class="text-decoration-none mb-3" style="font-family: 'Mulish', sans-serif">
-            <a href="{{url($data->destination_location)}}" class="text-decoration-none text-black">
-             <i class="bi bi-geo-alt"></i> Lihat Di Google Maps
+            <a href="{{url($data->destination_location)}}" target="_blank" class="text-decoration-none text-black">
+            <i class="bi bi-geo-alt"></i> Lihat Di Google Maps
               </a> 
             </h4>
-          <p class="mb-0"><i class="bi bi-thermometer-sun"></i>{{  $data->destination_day_temp  }}</p>
-          <p class="mb-0"><i class="bi bi-thermometer-snow"></i>{{  $data->destination_night_temp  }}</p>
+          <p class="mb-0"><i class="bi bi-thermometer-sun"></i>{{  $data->destination_day_temp  }}&#8451;</p>
+          <p class="mb-0"><i class="bi bi-thermometer-snow"></i>{{  $data->destination_night_temp  }}&#8451;</p>
           <p class="mb-0"><i class="bi bi-star-fill"></i>{{  $data->destination_rating  }}</p>
         </div>
 
