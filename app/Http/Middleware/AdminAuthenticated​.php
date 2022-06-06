@@ -24,7 +24,11 @@ class AdminAuthenticated​
 
             // if user is not admin take him to his dashboard
             if ( $user->hasRole('user') ) {
-                return redirect('/');
+                //return redirect(route('dashboard'));
+                return response()->json([
+                    'success' => false,
+                    'message' => 'unauthorized',
+                ],401);
             }
 
             // allow admin to proceed with request
@@ -33,7 +37,6 @@ class AdminAuthenticated​
             }
         }
 
-        
         abort(403);  // permission denied error
     }
 }
