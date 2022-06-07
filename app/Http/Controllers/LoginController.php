@@ -22,7 +22,11 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/Hotel');
+            if(auth()->user()->users_role == 'admin'){
+                return redirect('/admin-hotels');
+            }else {
+                return redirect('/Hotel');
+            }
         }
 
         return redirect('/Hotel');

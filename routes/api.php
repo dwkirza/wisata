@@ -6,6 +6,7 @@ use App\Http\Controllers\API\UserAdminController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\DestinationCategoryController;
 use App\Http\Controllers\API\DestinationImageController;
+use App\Http\Controllers\HotelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -65,4 +66,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
+Route::post('/add-hotel', [HotelController::class, 'store']);
+Route::post('/edit-hotel/{id}', [HotelController::class, 'update']);
+Route::post('/delete-hotel/{id}', [HotelController::class, 'destroy']);
 

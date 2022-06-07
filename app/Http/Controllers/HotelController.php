@@ -18,7 +18,7 @@ class HotelController extends Controller
      */
     public function index()
     {
-        $hotel = Hotel::all();
+        $hotel = Hotel::orderBy('id','desc')->get();
         $auth = Auth::check();
         $data = [
             'hotel_all' => $hotel,
@@ -29,6 +29,17 @@ class HotelController extends Controller
         return view('Hotel/list-hotel', $data);
     }
 
+    public function admin(){
+        $hotel = Hotel::orderBy('id','desc')->get();
+        $auth = Auth::check();
+        $data = [
+            'hotel_all' => $hotel,
+            'title' => 'Admin - Hotel',
+            'auth' => $auth
+        ];
+        return view('Hotel/admin-hotel', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -37,39 +48,6 @@ class HotelController extends Controller
     public function create()
     {
         //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $fields = $request->validate([
-            'name' => 'required|unique:hotel,name',
-            'hotel_image' => '',
-            'hotel_image.*' => 'file|mimes:png,jpg',
-        ]);
-        try {
-            $files = $request->file('hotel_image');
-            $filename = $fields['hotel_image'] . '-HotelImage-' . time() . rand(1, 1000) . '.' . $files->getClientOriginalName();
-            $filepath = $files->storeAs('uploads/hotel_image', $filename);
-
-            $fields['hotel_image'] = $filepath;
-            $data = Hotel::create($fields);
-            return response()->json([
-                'success' => true,
-                'message' => 'store success',
-                'data' => $data
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'error',
-                'errors' => $e->getMessage()
-            ]);
-        }
     }
 
     /**
@@ -114,15 +92,42 @@ class HotelController extends Controller
         $user = Auth::user()->users_first_name;
         return view('transaksi', compact(['hotel', 'title', 'category', 'user', 'today']));
     }
+
     /**
-     * Show the form for editing the specified resource.
+     * Store a newly created resource in storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'capacity' => 'required',
+            'feature' => 'required',
+            'price' => 'required',
+            'hotel_image' => 'file|mimes:png,jpg',
+        ]);
+
+        try {
+            $filename = $request->file('hotel_image')->getClientOriginalExtension();
+            $filepath = $request->file('hotel_image')->store('uploads/hotel_image');
+
+            $fields['hotel_image'] = $filepath;
+            $data = Hotel::create($fields);
+            return response()->json([
+                'success' => true,
+                'message' => 'store success',
+                'data' => $data
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'error',
+                'errors' => $e->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -134,7 +139,38 @@ class HotelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'capacity' => 'required',
+            'feature' => 'required',
+            'price' => 'required',
+            'hotel_image' => 'file|mimes:png,jpg',
+        ]);
+        $filepath = "";
+        
+        try {
+            $files = $request->file('hotel_image');
+            if($files){
+                $filename = $request->file('hotel_image')->getClientOriginalExtension();
+                $filepath = $request->file('hotel_image')->store('uploads/hotel_image');
+
+            }
+
+            $fields['hotel_image'] = ($filepath) ? $filepath : Hotel::find($id)['hotel_image'];
+            $data = Hotel::findOrFail($id)->update($fields);
+            return response()->json([
+                'success' => true,
+                'message' => 'update success',
+                'data' => $data
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'error',
+                'errors' => $e->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -145,6 +181,18 @@ class HotelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Hotel::findOrFail($id)->delete($id);
+            return response()->json([
+                'success' => true,
+                'message' => 'delete success',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'error',
+                'errors' => $e->getMessage()
+            ]);
+        }
     }
 }

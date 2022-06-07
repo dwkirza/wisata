@@ -88,6 +88,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Hotel/{id}', [HotelController::class, 'show'])->name('detailhotel');
     Route::get('/Hotel/{id}/{category}', [HotelController::class, 'category'])->name('categoryroom');
 
+    Route::get('/admin-hotels', [HotelController::class, 'admin']);
+
 
     // Route Info Kamar
     Route::get('/info-kamar', [InfokamarController::class, 'index'])->name('info-kamar');

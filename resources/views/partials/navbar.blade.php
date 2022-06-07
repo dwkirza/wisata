@@ -9,25 +9,41 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end text-white" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active  {{ ($title === " Beranda")}}"
-              style="font-size: 24; height: bold; font-family: 'Mulish', sans-serif;" aria-current="page"
-              href="/">Beranda</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active  {{ ($title === " Tentang")}} "style=" font-size: 24; height: bold;
-              font-family: 'Mulish' , sans-serif;" href="/about">Tentang</a>
-          </li>
-          <li class="nav-item" style="padding-right: 50">
-            <a class="nav-link active  {{ ($title === " Wisata")}}"
-              style="font-size: 24; height: bold; font-family: 'Mulish', sans-serif;"
-              href="/destinationCategory">Wisata</a>
-          </li>
+          <?php if (auth()->user() && auth()->user()->users_role == 'admin'): ?>
+            
+            <li class="nav-item" style="border:2px solid #777;margin:0 5px;border-radius: 40px;padding:0 10px" style="padding-right: 50">
+              <a class="nav-link  {{ ($title === " Wisata")}}"
+                style="font-size: 24; height: bold; font-family: 'Mulish', sans-serif;"
+                href="/admin-hotels">Manage Hotels</a>
+            </li>
+          <?php elseif (auth()->user() && auth()->user()->users_role != 'admin'): ?>
+            <li class="nav-item" style="border:2px solid #777;margin:0 5px;border-radius: 40px;padding:0 10px">
+              <a class="nav-link  {{ ($title === " Beranda")}}"
+                style="font-size: 24; height: bold; font-family: 'Mulish', sans-serif;" aria-current="page"
+                href="/">Beranda</a>
+            </li>
+            <li class="nav-item" style="border:2px solid #777;margin:0 5px;border-radius: 40px;padding:0 10px">
+              <a class="nav-link  {{ ($title === " Tentang")}} "style=" font-size: 24; height: bold;
+                font-family: 'Mulish' , sans-serif;" href="/about">Tentang</a>
+            </li>
+            <li class="nav-item" style="border:2px solid #777;margin:0 5px;border-radius: 40px;padding:0 10px">
+              <a class="nav-link  {{ ($title === " Wisata")}}"
+                style="font-size: 24; height: bold; font-family: 'Mulish', sans-serif;"
+                href="/destinationCategory">Wisata</a>
+            </li>
+            <li class="nav-item" style="border:2px solid #777;margin:0 5px;border-radius: 40px;padding:0 10px">
+              <a class="nav-link  {{ ($title === " Wisata")}}"
+                style="font-size: 24; height: bold; font-family: 'Mulish', sans-serif;"
+                href="/Hotel">Hotel</a>
+            </li>
 
-          <div class="">
-            <a class="btn btn-outline-dark " style="font-size: 24; height:bold; font-family: 'Mulish', sans-serif;"
+          <?php endif ?>
+
+          <li class="" style="border:2px solid #777;margin:0 5px;border-radius: 40px;padding:0 10px" style="padding-right: 50">
+            <a class="nav-link  {{ ($title === " Wisata")}}"
+              style="font-size: 24; height: bold; font-family: 'Mulish', sans-serif;"
               href="{{ isset($auth) ? route('logout'): route('login') }}">{{ isset($auth) ? 'Keluar': 'Masuk' }}</a>
-          </div>
+          </li>
         </ul>
       </div>
     </div>
